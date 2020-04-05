@@ -1,16 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Project 1 - MusicBuster</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>Project 1 - Music Buster</title>
 </head>
+
 <body>
+    <header>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <img src="./assets/images/microphone.png" width="60" height="20">
+                    <h1 class="title">
+                        Music Buster
+                    </h1>
+                    <h2 class="subtitle">
+                        Listen to any song of your choice with lyrics!
+                    </h2>
+                </div>
+            </div>
+        </section>
+    </header>   
+
+    <main>
+        <div class="columns">
+            <div class="column is-narrow">
+                <section class="section">
+                    <div id="search-parameters-field" class="field">
+                        <label class="label is-md is has-icons-left">Search Parameters</label>
+
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="search-artist" class="input is-md" type="text" placeholder="Artist Name">
+                            <span class="icon is-md is-left">
+                                <i class="fas fa-search "></i>
+                            </span>
+                            <span class="icon is-md is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="search-album" class="input is-md" type="text" placeholder="Album Name">
+                            <span class="icon is-md is-left">
+                                <i class="fas fa-search "></i>
+                            </span>
+                            <span class="icon is-md is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="search-song" class="input is-md" type="text" placeholder="Song Choice">
+                            <span class="icon is-md is-left">
+                                <i class="fas fa-search "></i>
+                            </span>
+                            <span class="icon is-md is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                        <!-- search song using speak option -->
+                    <!-- <div class="field">
+                        <div class="control has-icons-left has-icons-right">
+                            <form id="labnol" method="get" action="https://www.google.com/search">
+                                <div class="speech">
+                                    <input class="input is-md" type="text" placeholder="Click on mic & speak">
+                                    <span class="icon is-md is-right">
+                                    <img onclick= "startDictation()" src="assets/images/Microphone-icon.png"  height="35" width="35">
+                                    </span> 
+                                </div>
+                            </form>
+                        </div>
+                    </div> -->
+
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <a id="submit-button" class="button is-primary">Submit</a>
+                        </p>
+                        <p class="control">
+                            <a id="cancel-button" class="button is-light">Cancel</a>
+                        </p>
+                    </div>
+                </section>
+            </div>    
+           
+
+             <!-- Artist's Thumbnail and URL -->
+             <div id="image-column" class="column"> 
+                <section id="image-section" class="section">
+                    <label class="label">
+                        Thumbnail
+                    </label>
+                </section>    
+            </div>
+            <!-- Artist's Bio --> 
+            <div id="bio-column" class="column"> 
+                <section id="bio-section" class="section">
+                    <label class="label">
+                        Bio
+                    </label>
+                </section>    
+            </div>
+            <!-- Song Lyrics -->
+            <div id="lyrics-column" class="column"> 
+                <section id="lyrics-section" class="section">
+                    <label class="label">
+                        Lyrics
+                    </label>
+                </section>
+            </div>
+        </div>
+    </main>
     
-    
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Music Buster</strong> is made up of different APIs to retrieve the best soundtrack with lyrics displayed so that you can read along.
+            </p>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+    <script src="./assets/javascript/script.js"></script>
 </body>
+
 </html>
