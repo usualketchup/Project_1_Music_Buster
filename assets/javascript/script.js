@@ -9,10 +9,11 @@ $(document).ready(function() {
                 url: queryURL,
                 method: "GET"
             }).then (function(response) {
-                console.log(response);
+                console.log(response.artists[0].strArtist);
                
                 function albumAudioDB() {
-                    const albumName = "";
+                    const albumName = $("#search-album").val().trim();
+                    console.log(albumName);
                     const queryURL = `https://www.theaudiodb.com/api/v1/json/5d656564694f534d656564/searchalbum.php?s=${artistName}&a=${albumName}`
     
                     $.ajax({
@@ -24,7 +25,7 @@ $(document).ready(function() {
                 }
     
                 function trackAudioDB() {
-                    const trackName = "";
+                    const trackName = $("#search-song").val().trim();
                     const queryURL = `https://www.theaudiodb.com/api/v1/json/5d656564694f534d656564/searchtrack.php?s=${artistName}&t=${trackName}`;
                 
                     $.ajax({
