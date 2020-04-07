@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+.hero {
+background-image: url("http://getwallpapers.com/wallpaper/full/3/4/2/505056.jpg");
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}
+.hero-body {
+    margin: 0 auto;
+    text-align: center;
+}
+#hero-microphone-image {
+    margin-bottom: 5px;
+    height: 70px;
+    width: 60px;
+}
+#hero-title,
+#hero-subtitle-1,
+#hero-subtitle-2 {
+    color: rgb(255, 255, 255);
+}
+#hero-title {
+    margin-bottom: 30px;
+    font-size: 50px;
+}
+#hero-subtitle-1 {
+    margin-bottom: 5px;
+}
+#toggle-search {
+    float: right;
+    margin-top: -30px;
+    margin-bottom: 10px;
+}
+#search-song,
+#search-artist,
+#search-album {
+    margin-bottom: 10px;
+}
+#album-control,
+#song-control {
+    display: none;
+}
+#submit-button,
+#clear-button {
+    margin-top: 10px;
+}
+#mic-subtitle {
+    text-align: center;
+    margin-top: -20px;
+    margin-left: 20px;
+}
+.speech {
+    border: 1px solid #DDD;
+    width: 520px;
+    margin: 10;
+    margin-left: 20px;
+}
+.speech input {
+    border: 0;
+    width: 90%;
+    display: inline-block;
+    height: 45px;
+    margin-left: 20px;
+}
+.speech img {
+    float: right;
+    width: 30px
+}
+#display-artist-container,
+#display-album-container,
+#display-song-container {
+    display: none;
+}
+#display-artist-card {
+    padding: 10px;
+    margin-top: 40px;
+}
+#readMoreBtn,
+#fullDescriptionBtnAlbum,
+#fullDescriptionBtnSong,
+#fullLyricsBtnSong {
+    margin-top: 15px;
+}
+#artist-style-genre-mood-label,
+#album-name-label,
+#album-year-label,
+#album-style-genre-mood-label,
+#song-name-label,
+#song-album-name-label,
+#song-style-genre-mood-label {
+    margin-top: 10px;
+}
+#artist-second-columns,
+#song-lyrics-column {
+    margin-top: -100px;
+}
+.div-album,
+.div-most-loved-tracks,
+.div-music-videos {
+    margin-bottom: 15px;
+}
+#trackInfoBtn {
+    font-size: 12px;
+    margin-top: 5px;
+}
+#display-album-card,
+#display-song-card {
+    padding: 10px;
+    margin-top: 10px;
+}
+#main-footer {
+    margin-top: 30px;
+    height: 200px
+}
+#feedback-icon {
+    margin: 0 auto;
+}
