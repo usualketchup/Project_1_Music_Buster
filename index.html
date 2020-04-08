@@ -12,14 +12,14 @@
 
 <body>
     <header>
-        <section class="hero is-small is-primary">
+        <section class="hero is-small">
             <div id="hero-container" class="container">
                 <div class="hero-body">
                     <img id="hero-microphone-image" src="./assets/images/microphone.png" width="60" height="20">
                     <h1 id="hero-title" class="title">Music Buster</h1>
                     <h2 id="hero-subtitle-1" class="subtitle">Get all kinds of cool information from your favorite
                         artists!</h2>
-                    <h2 id="hero-subtitle-2" class="subtitle">Including discography, album/track details, music videos,
+                    <h2 id="hero-subtitle-2" class="subtitle">Including discography, album/song details, music videos,
                         lyrics, and more!</h2>
                 </div>
             </div>
@@ -28,13 +28,14 @@
 
     <main>
         <div class="columns">
-            <div class="column is-narrow">
+            <div class="column is-narrow is-mobile">
                 <section class="section">
                     <div id="search-parameters-field" class="field">
                         <label class="label is-md is has-icons-left">Search Parameters</label>
                         <button id="toggle-search" class="button is-light is-small">...</button>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="search-artist" class="input is-md" type="text" placeholder="Artist Name">
+                            <input id="search-artist" class="input is-md" autocomplete="off" type="text"
+                                placeholder="Artist Name">
                             <span class="icon is-md is-left">
                                 <i class="fas fa-search "></i>
                             </span>
@@ -43,7 +44,8 @@
                             </span>
                         </div>
                         <div id="album-control" class="control has-icons-left has-icons-right response">
-                            <input id="search-album" class="input is-md" type="text" placeholder="Album Name">
+                            <input id="search-album" class="input is-md" autocomplete="off" type="text"
+                                placeholder="Album Name">
                             <span class="icon is-md is-left">
                                 <i class="fas fa-search "></i>
                             </span>
@@ -52,14 +54,17 @@
                             </span>
                         </div>
                         <div id="song-control" class="control has-icons-left has-icons-right response">
-                            <input id="search-song" class="input is-md" type="text" placeholder="Song Name">
+                            <input id="search-song" class="input is-md" autocomplete="off" type="text"
+                                placeholder="Song Name">
                             <span class="icon is-md is-left">
-                                <i class="fas fa-search "></i>
+                                <i class="fas fa-search"></i>
                             </span>
                             <span class="icon is-md is-right">
                                 <i class="fas fa-check"></i>
                             </span>
                         </div>
+
+                        <p id="error-text" class="help is-danger">Please input a valid artist name!</p>
 
                         <div class="field is-grouped is-grouped-centered">
                             <p class="control">
@@ -70,19 +75,50 @@
                             </p>
                         </div>
                 </section>
-
+                <br>
                 <div id="mic-subtitle" class="subtitle">
-                    <p> Click on mic if you want to search in Google by speaking!</p>
+                    <p>Click on the mic if you want to search through Google by speaking!</p>
+                    <form id="speachSearch" method="get" action="https://www.google.com/search">
+                        <div class="speech">
+                            <input class="input" autocomplete="off" type="text" name="q" id="transcript"
+                                placeholder="Speak">
+                            <img id="microphone-image" class="is-center" onclick="startDictation()"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/256px-Google_mic.svg.png"
+                                height="20" width="20">
+                        </div>
+                    </form>
                 </div>
-                <form id="speachSearch" method="get" action="https://www.google.com/search">
-                    <div class="speech">
-                        <input class="input" type="text" name="q" id="transcript" placeholder="Speak">
-                        <img id="microphone-image" onclick="startDictation()"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/256px-Google_mic.svg.png"
-                            height="20" width="20">
+            </div>
+            <div id="display-trending-album-container" class="container is-fluid">
+                <div id="display-trending-album-card" class="card">
+                    <h1 id="trending-title">Current Trending</h1>
+                    <div id="trending-album-columns" class="columns">
+                        <div id="-trending-album-image-column" class="column">
+                            <section id="trending-album-image-section" class="section">
+                                <label class="label">
+                                    Album Thumbnail
+                                </label>
+                                <div id="trending-album-thumbnail"></div>
+                                <label id="trending-album-name-label" class="label">
+                                    Album Name
+                                </label>
+                                <div id="trending-album-name"></div>
+                            </section>
+                        </div>
+                        <div id="-trending-track-image-column" class="column">
+                            <section id="trending-song-track-section" class="section">
+                                <label class="label">
+                                    Track Thumbnail
+                                </label>
+                                <div id="trending-track-thumbnail"></div>
+                                <label id="trending-track-name-label" class="label">
+                                    Track Name
+                                </label>
+                                <div id="trending-track-name"></div>
+                            </section>
+                        </div>
                     </div>
-                </form>
-
+                </div>
             </div>
 
             <div id="display-artist-container" class="container is-fluid">
@@ -109,21 +145,14 @@
                                 <label class="label">
                                     Social Media
                                 </label>
-                                <div id="artist-social-media"></div>
+                                <div id="artist-social-media">
+                                </div>
                                 <label id="artist-style-genre-mood-label" class="label">
                                     Style/Genre/Mood
                                 </label>
                                 <div id="artist-style-genre-mood"></div>
                             </section>
                         </div>
-                        <!-- Song Lyrics
-                        <div id="lyrics-column" class="column"> 
-                            <section id="lyrics-section" class="section">
-                                <label class="label">
-                                    Lyrics
-                                </label>
-                            </section>
-                        </div> -->
                     </div>
                     <div id="artist-second-columns" class="columns">
                         <div id="artist-discography-column" class="column">
@@ -254,10 +283,19 @@
         <div class="content has-text-centered">
             <p><strong>Music Buster</strong> is made up of two APIs to retrieve the best information of your favorite
                 artists to dynamically display them on the page!</p>
-            <img id="feedback-icon" src="./assets/images/feedback-icon.png"
-                onclick="parent.location='mailto:nmantohac82098@gmail.com' " 
-                style="cursor:pointer" />
+            <a href="mailto:nmantohac82098@gmail.com">
+                <img id="feedback-icon" src="./assets/images/feedback-icon.png" style="cursor:pointer" />
+            </a>
             <p>Send Us Feedback!</p>
+            <!-- <i id="website-icon" class="fas fa-globe"></i>
+            <i id="facebook-icon" class="fab fa-facebook-f is-large"></i>
+            <i id="twitter-icon" class="fab fa-twitter is-large"></i> -->
+        </div>
+        <div class="count">
+            <p> Page Views</p>  
+            <a href="https://www.hitwebcounter.com" target="_blank">
+               <img src="https://hitwebcounter.com/counter/counter.php?page=7225714&style=0027&nbdigits=5&type=page&initCount=0" title="User Stats" Alt="PHP Hits Count"   border="0" >
+            </a> 
         </div>
     </footer>
 

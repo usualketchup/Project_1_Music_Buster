@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 .hero {
-background-image: url("http://getwallpapers.com/wallpaper/full/3/4/2/505056.jpg");
+background-image: url("../images/hero-image.jpg");
 background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -12,10 +12,21 @@ background-size: cover;
     margin: 0 auto;
     text-align: center;
 }
+.column {
+    padding: 0.25rem 0.75rem;
+}
+.count {
+    text-align: right;
+    color: white;
+    font-weight: bold;
+    margin-left: 1rem;
+    text-shadow: 1px 1px black;
+}
 #hero-microphone-image {
     margin-bottom: 5px;
     height: 70px;
     width: 60px;
+    border-radius: 1rem;
 }
 #hero-title,
 #hero-subtitle-1,
@@ -29,6 +40,11 @@ background-size: cover;
 #hero-subtitle-1 {
     margin-bottom: 5px;
 }
+#hero-title,
+#hero-subtitle-1,
+#hero-subtitle-2 {
+    text-shadow: 1px 1px black;
+}
 #toggle-search {
     float: right;
     margin-top: -30px;
@@ -41,6 +57,11 @@ background-size: cover;
 }
 #album-control,
 #song-control {
+    display: none;
+}
+#error-text {
+    text-align: center;
+    font-size: 16px;
     display: none;
 }
 #submit-button,
@@ -69,12 +90,20 @@ background-size: cover;
     float: right;
     width: 30px
 }
+#trending-title {
+    padding: 20px;
+    margin-bottom: -50px;
+    font-size: 34px;
+    text-align: center;
+    font-family: cursive;
+}
 #display-artist-container,
 #display-album-container,
 #display-song-container {
     display: none;
 }
-#display-artist-card {
+#display-artist-card,
+#display-trending-album-card {
     padding: 10px;
     margin-top: 40px;
 }
@@ -84,6 +113,8 @@ background-size: cover;
 #fullLyricsBtnSong {
     margin-top: 15px;
 }
+#trending-album-name-label,
+#trending-track-name-label,
 #artist-style-genre-mood-label,
 #album-name-label,
 #album-year-label,
@@ -97,6 +128,8 @@ background-size: cover;
 #song-lyrics-column {
     margin-top: -100px;
 }
+.div-trending-album-artist,
+.div-trending-song-album-artist,
 .div-album,
 .div-most-loved-tracks,
 .div-music-videos {
@@ -117,4 +150,70 @@ background-size: cover;
 }
 #feedback-icon {
     margin: 0 auto;
+}
+#website-icon,
+#facebook-icon,
+#twitter-icon {
+    height: 45px;
+    width: 45px;
+}
+#website-icon {
+    color: black;
+}
+#facebook-icon {
+    color: rgb(59, 59, 128);
+}
+#twitter-icon {
+    color: rgb(120, 207, 236);
+}
+@media screen and (max-width: 769px) {
+    .section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        } 
+        #artist-image-section {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        #artist-social-media-section {
+            padding-bottom: 3rem;
+        }
+        #artist-discography-section {
+            padding-top: 2.5rem;
+        }
+        #song-music-video-section {
+            padding-bottom: 2rem;
+        }
+        #song-lyrics-section {
+            padding-top:3rem;
+        }
+}    
+@media screen and (max-width: 578px) {
+    .section {
+      padding: 1rem 1.5rem;
+    }
+    .speech {
+      width: 80%;
+    }
+    .speech img {
+        float: none;
+    }
+    .footer {
+      padding: 1rem 0.5rem 3rem;
+    }
+}
+@media screen and (max-width: 375px) {
+    .section {
+      padding: 1rem 1rem;
+    }
+    .speech {
+      width: 80%;
+    }
+    .speech input {
+      margin-left: 0px;
+    }
+    #main-footer {
+      margin-top: 0px;
+      height: 100px;
+    }
 }
