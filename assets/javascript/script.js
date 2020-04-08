@@ -21,6 +21,7 @@ $(document).ready(function() {
         }
     })
 
+    // Current Trending Albums
     function currentTrendingAlbums() {
         const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=albums`
         $.ajax({
@@ -48,6 +49,7 @@ $(document).ready(function() {
         });
     }
 
+    // Current Trending Songs
     function currentTrendingSongs() {
         const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=singles`
         $.ajax({
@@ -604,7 +606,7 @@ $(document).ready(function() {
                     document.getElementById(`transcript`).value
                         = e.results[0][0].transcript;
                     recognition.stop();
-                    document.getElementById(`speachSearch`).submit();
+                    document.getElementById(`speech-search`).submit();
                 };
                 recognition.onerror = function (e) {
                     recognition.stop();
