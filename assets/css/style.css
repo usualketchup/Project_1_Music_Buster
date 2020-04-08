@@ -19,6 +19,7 @@ background-size: cover;
     margin-bottom: 5px;
     height: 70px;
     width: 60px;
+    border-radius: 1rem;
 }
 
 #hero-title,
@@ -59,6 +60,12 @@ background-size: cover;
     display: none;
 }
 
+#error-text {
+    text-align: center;
+    font-size: 16px;
+    display: none;
+}
+
 #submit-button,
 #clear-button {
     margin-top: 10px;
@@ -74,18 +81,36 @@ background-size: cover;
     border: 1px solid #DDD;
     width: 520px;
     margin: 10;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .speech input {
     border: 0;
     width: 90%;
     display: inline-block;
     height: 45px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
+
+#speachSearch {
+    margin-top: 15px;
+}
+
+#speach-input {
+    width: 90%;
+    margin-left: -5px;
+}
+
 .speech img {
     float: right;
     width: 30px
+}
+
+#trending-title {
+    padding: 20px;
+    margin-bottom: -50px;
+    font-size: 34px;
+    text-align: center;
+    font-family: cursive;
 }
 
 #display-artist-container,
@@ -94,7 +119,8 @@ background-size: cover;
     display: none;
 }
 
-#display-artist-card {
+#display-artist-card,
+#display-trending-album-card {
     padding: 10px;
     margin-top: 40px;
 }
@@ -106,21 +132,25 @@ background-size: cover;
     margin-top: 15px;
 }
 
+#trending-album-name-label,
+#trending-track-name-label,
 #artist-style-genre-mood-label,
 #album-name-label,
 #album-year-label,
 #album-style-genre-mood-label,
 #song-name-label,
-#song-album-name-label {
+#song-album-name-label,
+#song-style-genre-mood-label {
     margin-top: 10px;
 }
 
 #artist-second-columns,
-#song-music-video-column,
 #song-lyrics-column {
     margin-top: -100px;
 }
 
+.div-trending-album-artist,
+.div-trending-song-album-artist,
 .div-album,
 .div-most-loved-tracks,
 .div-music-videos {
@@ -147,28 +177,68 @@ background-size: cover;
     margin: 0 auto;
 }
 
+#website-icon,
+#facebook-icon,
+#twitter-icon {
+    height: 45px;
+    width: 45px;
+}
+
+#website-icon {
+    color: black;
+}
+
+#facebook-icon {
+    color: rgb(66, 103, 178);
+}
+
+#twitter-icon {
+    color: rgb(29, 161, 242);
+}
+
 @media screen and (max-width: 769px) {
+
+    #mic-subtitle {
+        margin-top: 10px;
+    }
+
+    #speachSearch {
+        margin-left: 20px;
+    }
+
     .section {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         } 
+        #artist-image-section {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
         #artist-social-media-section {
             padding-bottom: 3rem;
         }
         #artist-discography-section {
-            padding-top: 3rem;
+            padding-top: 2.5rem;
+        }
+        #song-music-video-section {
+            padding-bottom: 2rem;
         }
         #song-lyrics-section {
             padding-top:3rem;
         }
 }    
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 578px) {
     .section {
       padding: 1rem 1.5rem;
     }
     .speech {
-      width: 420px;
+      width: 80%;
     }
+
+    .speech img {
+        float: none;
+    }
+
     .footer {
       padding: 1rem 0.5rem 3rem;
     }
@@ -178,7 +248,7 @@ background-size: cover;
       padding: 1rem 1rem;
     }
     .speech {
-      width: 320px;
+      width: 80%;
     }
     .speech input {
       margin-left: 0px;

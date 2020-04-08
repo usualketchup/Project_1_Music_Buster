@@ -21,23 +21,107 @@ $(document).ready(function() {
         }
     })
 
+    function currentTrendingAlbums() {
+        const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=albums`
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then (function(response) {
+            console.log(response);
+            for (let j = 0; j < response.trending.length; j++) {
+                const $div = $("<div>")
+                $div.addClass("div-trending-album-artist");
+
+                const currentAlbum = response.trending[j];
+                const trendingAlbumThumbnail = currentAlbum.strAlbumThumb;
+                const trendingAlbum = currentAlbum.strAlbum;
+                const trendingArtistName = currentAlbum.strArtist;
+
+                const $trendingImgAlbumThumbnail = $("<img>").attr("src", trendingAlbumThumbnail).attr("id", "trending-album-image-thumbnail").width(100).height(100);   
+                const $ptrendingAlbumName = $("<p>").text(`Album Name: ${trendingAlbum}`);
+                const $ptrendingAlbumArtist = $("<p>").text(`Artist Name: ${trendingArtistName}`);
+
+                $("#trending-album-thumbnail").append($trendingImgAlbumThumbnail);
+                $div.append($ptrendingAlbumArtist, $ptrendingAlbumName)
+                $("#trending-album-name").append($div); 
+            }
+        });
+    }
+
+    function currentTrendingSongs() {
+        const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=singles`
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then (function(response){
+            console.log(response);
+            for (let i = 0; i < response.trending.length; i++) {
+                const $div = $("<div>")
+                $div.addClass("div-trending-song-album-artist");
+
+                const currentSong = response.trending[i];
+                const trendingSongThumbnail = currentSong.strTrackThumb;
+                const trendingTrack = currentSong.strTrack;
+                const trendingTrackAlbum = currentSong.strAlbum;
+                const trendingTrackArtist = currentSong.strArtist;
+
+                const $trendingImgTrackThumbnail = $("<img>").attr("src", trendingSongThumbnail).attr("id", "trending-song-image-thumbnail").width(100).height(100);   
+                const $ptrendingTrackName = $("<p>").text(`Track Name: ${trendingTrack}`);
+                const $ptrendingTrackALbum = $("<p>").text(`Track Album: ${trendingTrackAlbum}`);
+                const $ptrendingTrackArtist = $("<p>").text(`Artist Name: ${trendingTrackArtist}`);
+
+                $("#trending-track-thumbnail").append($trendingImgTrackThumbnail);
+                $div.append($ptrendingTrackName, $ptrendingTrackALbum, $ptrendingTrackArtist)
+                $("#trending-track-name").append($div); 
+            }
+        });  
+    }
+
     // Submit Button onclick function
     $("#submit-button").on("click", function(event) {
 
         event.preventDefault();
 
-        if ($("#search-album").val().trim() === "" && $("#search-song").val().trim() === "") {
-            displayArtist();
+        if ($("#search-artist").val().trim() === "" && $("#search-album").val().trim() === "" && $("#search-song").val().trim() === "") {
+            console.log("Hello");
+            $("#error-text").show();
+            return false;
         } 
+        else if ($("#search-artist").val().trim() === "" && $("#search-album").val().trim() === "") {
+            console.log("Hello");
+            $("#error-text").show();
+            return false;
+        }
+        else if ($("#search-artist").val().trim() === "" && $("#search-song").val().trim() === "") {
+            console.log("Hello");
+            $("#error-text").show();
+            return false;
+        }
+        else if ($("#search-album").val().trim() === "" && $("#search-song").val().trim() === "") {
+            $("#display-trending-album-container").hide();
+            $("#error-text").hide();
+            displayArtist();
+        }
         else if ($("#search-album").val().trim() === "") {
+            $("#display-trending-album-container").hide();
+            $("#error-text").hide();
             displayArtist();
             displayTrack();
         }
         else if ($("#search-song").val().trim() === "") {
+            $("#display-trending-album-container").hide();
+            $("#error-text").hide();
             displayArtist();
             displayAlbum();
         }
+        else if ($("#search-artist").val().trim() === "") {
+            console.log("Hello");
+            $("#error-text").show();
+            return false;
+        }
         else {
+            $("#display-trending-album-container").hide();
+            $("#error-text").hide();
             displayArtist();
             displayAlbum();
             displayTrack();
@@ -95,17 +179,25 @@ $(document).ready(function() {
                 $("#artist-social-media").empty();
                 $("#artist-style-genre-mood").empty();
 
-                const $pWebsite = $("<p>").text("Website:").attr("style", "text-decoration: underline");
-                const $aWebsite = $("<a>").text(`${response.artists[0].strWebsite}`).attr("href", `https://${response.artists[0].strWebsite}`).attr("target", "_blank");
-                const $pFacebook = $("<p>").text("Facebook:").attr("style", "text-decoration: underline");
-                const $aFacebook = $("<a>").text(`${response.artists[0].strFacebook}`).attr("href", `https://${response.artists[0].strFacebook}`).attr("target", "_blank");
-                const $pTwitter = $("<p>").text("Twitter:").attr("style", "text-decoration: underline");
-                const $aTwitter = $("<a>").text(`${response.artists[0].strTwitter}`).attr("href", `https://${response.artists[0].strTwitter}`).attr("target", "_blank");
+                const $imgWebsiteIcon = $(`<i id="website-icon" class="fas fa-globe"></i>`);
+                const $aWebsiteTag = $("<a>").attr("id", "a-website-icon").attr("href", `https://${response.artists[0].strWebsite}`).attr("target", "_blank");
+                const $imgFacebookIcon = $("<img>").attr("id", "facebook-icon").addClass("fab fa-facebook-f").attr("href", `https://${response.artists[0].strFacebook}`).attr("target", "_blank");
+                const $aFacebookTag = $("<a>").attr("id", "a-facebook-icon").attr("href", `https://${response.artists[0].strFacebook}`).attr("target", "_blank");
+                const $imgTwitterIcon = $("<img>").attr("id", "twitter-icon").addClass("fab fa-twitter").attr("href", `https://${response.artists[0].strTwitter}`).attr("target", "_blank");
+                const $aTwitterTag = $("<a>").attr("id", "a-twitter-icon").attr("href", `https://${response.artists[0].strTwitter}`).attr("target", "_blank");
                 const $pStyle = $("<p>").text(`Style: ${response.artists[0].strStyle}`);   
                 const $pGenre = $("<p>").text(`Genre: ${response.artists[0].strGenre}`); 
                 const $pMood = $("<p>").text(`Mood: ${response.artists[0].strMood}`);   
 
-                $("#artist-social-media").prepend($pWebsite, $aWebsite, $pFacebook, $aFacebook, $pTwitter, $aTwitter);
+                $("#artist-social-media").append($aWebsiteTag);
+                $("#a-website-icon").append($imgWebsiteIcon);
+                $("#artist-social-media").append($aFacebookTag);
+                $("#a-facebook-icon").append($imgFacebookIcon);
+                $("#artist-social-media").append($aTwitterTag);
+                $("#a-twitter-icon").append($imgTwitterIcon);
+
+
+                // $("#artist-social-media").prepend($imgWebsiteIcon, $imgFacebookIcon, $imgTwitterIcon);
                 $("#artist-style-genre-mood").prepend($pStyle, $pGenre, $pMood);
 
                 // Artist - Discography Column
@@ -168,13 +260,23 @@ $(document).ready(function() {
                                                                     <h1>Track Description:</h1><hr>
                                                                         <p>${mostLovedTrackList[i].strDescriptionEN}</p>
                                                                     <h1>Track Music Video:</h1><hr>
-                                                                        <iframe width="600" height="300" src="${mostLovedTrackList[i].strMusicVid.replace("watch?v=", "embed/")}" frameborder="0" allowfullscreen></iframe>
+                                                                        <p>URL: <a href="${mostLovedTrackList[i].strMusicVid}" target="_blank">${mostLovedTrackList[i].strMusicVid}</a></p>
                                                                 </section>
                                                             </div>
                                                         </div>`)
 
                             $div.append($trackName, $trackInfoModal);
                             $("#artist-most-loved-tracks").append($div);
+
+                            $(document).on("click", "#trackInfoBtn", function() {
+                                $(this).parent().find(".trackInfoModal").addClass("is-active");
+                                $(this).addClass("is-clipped");
+                            }) 
+
+                            $(document).on("click", ".delete", function() {
+                                $(this).parent().parent().parent().removeClass("is-active");
+                                $(this).removeClass("is-clipped");
+                            }) 
                         }
                     })
                 }
@@ -211,6 +313,9 @@ $(document).ready(function() {
                 $("#display-artist-container").show();
     
             }).catch(function(error) {
+
+                $("#error-text").show();
+                $("#display-trending-album-container").show();
 
             })
         }
@@ -353,11 +458,9 @@ $(document).ready(function() {
                 // Track - Music Video
                 $("#song-music-video").empty();
 
-                const $songMusicVideoEmbed = $(`<embed width="600" height="300" src="${response.track[0].strMusicVid.replace("watch?v=", "embed/")}" frameborder="0" allowfullscreen></embed>`)
+                const $songMusicVideoURL = $("<a>").text(`${response.track[0].strMusicVid}`).attr("href", response.track[0].strMusicVid).attr("target", "_blank");
 
-                // const $songMusicVideoURL = $("<a>").text(`${response.track[0].strMusicVid}`).attr("href", response.track[0].strMusicVid).attr("target", "_blank");
-
-                $("#song-music-video").append($songMusicVideoEmbed);
+                $("#song-music-video").append($songMusicVideoURL);
 
                 // Track - Lyrics
                 function lyricsOVH() {
@@ -404,58 +507,10 @@ $(document).ready(function() {
             })
         }
 
-        // function songSearchLy() {
-        //     const songName = ""
-        //     const songURL = `https://searchly.asuarez.dev/api/v1/song/search?query=${songName}`
-    
-        //     $.ajax({
-        //         url: songURL,
-        //         method: "GET"
-        //     }).then (function(response) {
-        //         console.log(response);
-        //     })
-        // }
-
-        // function searchPlaylists() {
-        //     const queryURL = `https://www.theaudiodb.com/api/v1/json/5d656564694f534d656564/playlist.php?id=15524`
-    
-        //     $.ajax({
-        //         url: queryURL,
-        //         method: "GET"
-        //     }).then (function(response) {
-        //         console.log(response);
-        //     })
-        // }
-
     displayArtist();
     displayAlbum();
     displayTrack();
-    // songSearchLy();
-    // searchPlaylists();
     })
-
-    // function currentTrendingAlbums() {
-    //     const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=albums`
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then (function(response) {
-    //         console.log(response);
-    //         function currentTrendingSongs() {
-    //             const queryURL = `https://theaudiodb.com/api/v1/json/5d656564694f534d656564/trending.php?country=us&type=itunes&format=singles`
-
-    //             $.ajax({
-    //                 url: queryURL,
-    //                 method: "GET"
-    //             }).then (function(response) {
-    //                 console.log(response);
-    //             })
-    //         }
-    //         currentTrendingSongs();
-    //     })
-        
-    // }
 
     // Clear Button 
     $("#clear-button").on("click", function(event) {
@@ -499,21 +554,29 @@ $(document).ready(function() {
         }
 
         if ($("#search-album").val().trim() === "" && $("#search-song").val().trim() === "") {
+            $("#display-trending-album-container").show();
+            $("#error-text").hide();
             emptyAll();
             hideContainer();
             emptyInput();
         } 
         else if ($("#search-album").val().trim() === "") {
+            $("#display-trending-album-container").show();
+            $("#error-text").hide();
             emptyAll();
             hideContainer();
             emptyInput();
         }
         else if ($("#search-song").val().trim() === "") {
+            $("#display-trending-album-container").show();
+            $("#error-text").hide();
             emptyAll();
             hideContainer();
             emptyInput();
         }
         else {
+            $("#display-trending-album-container").show();
+            $("#error-text").hide();
             emptyAll();
             hideContainer();
             emptyInput();
@@ -527,17 +590,6 @@ $(document).ready(function() {
             $("#submit-button").click(); 
         } 
     }); 
-
-    // Track Info Modals from Artist Display
-    $(document).on("click", "#trackInfoBtn", function() {
-        $(this).parent().find(".trackInfoModal").addClass("is-active");
-        $(this).addClass("is-clipped");
-    }) 
-
-    $(document).on("click", ".delete", function() {
-        $(this).parent().parent().parent().removeClass("is-active");
-        $(this).removeClass("is-clipped");
-    }) 
 
     // Google Microphone Search
     $("#microphone-image").on("click", function() {
@@ -562,6 +614,6 @@ $(document).ready(function() {
         startDictation();
     }); 
 
-    // currentTrendingAlbums();
-
+    currentTrendingAlbums();
+    currentTrendingSongs();
 });
