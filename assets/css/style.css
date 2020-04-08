@@ -85,19 +85,9 @@ background-size: cover;
 }
 .speech input {
     border: 0;
-    width: 90%;
+    width: 485px;
     display: inline-block;
     height: 45px;
-    margin-left: 10px;
-}
-
-#speachSearch {
-    margin-top: 15px;
-}
-
-#speach-input {
-    width: 90%;
-    margin-left: -5px;
 }
 
 .speech img {
@@ -202,8 +192,27 @@ background-size: cover;
         margin-top: 10px;
     }
 
-    #speachSearch {
-        margin-left: 20px;
+    #speech-search {
+        margin-left: 100px;
+    }
+
+    #trending-title {
+        margin-bottom: 10px;
+    }
+
+    #trending-track-image-column,
+    #artist-most-loved-tracks-column,
+    #artist-music-videos-column {
+        margin-top: -40px;
+    }
+
+    #artist-bio-column,
+    #artist-social-media-column,
+    #album-description-column,
+    #album-label-column,
+    #song-description-column,
+    #song-music-video-column {
+        margin-top: -25px;
     }
 
     .section {
@@ -228,6 +237,16 @@ background-size: cover;
         }
 }    
 @media screen and (max-width: 578px) {
+
+    #mic-subtitle {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    #speech-search {
+        margin-left: 80px;
+    }
+
     .section {
       padding: 1rem 1.5rem;
     }
@@ -244,6 +263,11 @@ background-size: cover;
     }
 }
 @media screen and (max-width: 375px) {
+
+    #speech-search {
+        margin-left: 40px;
+    }
+
     .section {
       padding: 1rem 1rem;
     }
