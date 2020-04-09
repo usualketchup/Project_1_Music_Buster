@@ -1,5 +1,7 @@
 # Project 1 - Music Buster
 
+Team: Norberto Mantohac, Ujwal Kashyap, Narayan Poudel, Shahid Hussain
+
 URL Links:
   1) https://github.com/NMantohac/Project_1
   2) https://nmantohac.github.io/Project_1/
