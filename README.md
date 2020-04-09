@@ -53,15 +53,17 @@ Description:
   https://drive.google.com/file/d/1jL4IrWwuqyR8GIMWGKy-xlIknW8j91Nn/view
   
   Music Buster - Default Page (80% Zoomed Out)
+  
   ![Music Buster - Default Page:](https://puu.sh/Fv4TG/0a719f463f.png)
   
   Music Buster - Artist Display (80% Zoomed Out)
-  ![Music Buster - Artist Display:](https://puu.sh/Fv4Ud/134f3ce29b.png)
+  
+  ![Music Buster - Artist Display:](https://puu.sh/Fv52g/1e7ef03d1c.png)
   
   Music Buster - Album Display (80% Zoomed Out)
+  
   ![Music Buster - Album Display:](https://puu.sh/Fv4UP/f40b0c75a6.png)
   
   Music Buster - Song Display (50% Zoomed Out)
-  ![Music Buster - Song Display:](https://puu.sh/Fv4W4/c6f244792e.png)
-
   
+  ![Music Buster - Song Display:](https://puu.sh/Fv4W4/c6f244792e.png)
