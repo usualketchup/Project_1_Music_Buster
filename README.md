@@ -49,7 +49,8 @@ Description:
     
   Screenshot(s):
   
-  Music Buster - Overall Function 
+  Music Buster - Overall Function
+  
   https://drive.google.com/file/d/1jL4IrWwuqyR8GIMWGKy-xlIknW8j91Nn/view
   
   Music Buster - Default Page (80% Zoomed Out)
