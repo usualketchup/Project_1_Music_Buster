@@ -16,9 +16,9 @@ background-size: cover;
 }
 
 #hero-microphone-image {
-    margin-bottom: 5px;
     height: 70px;
     width: 60px;
+    margin-bottom: 5px;
     border-radius: 1rem;
 }
 
@@ -61,9 +61,9 @@ background-size: cover;
 }
 
 #error-text {
+    display: none;
     text-align: center;
     font-size: 16px;
-    display: none;
 }
 
 #submit-button,
@@ -72,22 +72,22 @@ background-size: cover;
 }
 
 #mic-subtitle {
-    text-align: center;
     margin-top: -20px;
     margin-left: 20px;
+    text-align: center;
 }
 
 .speech {
-    border: 1px solid #DDD;
     width: 520px;
     margin: 10;
     margin-left: 10px;
+    border: 1px solid #DDD;
 }
 .speech input {
-    border: 0;
-    width: 485px;
     display: inline-block;
     height: 45px;
+    width: 485px;
+    border: 0;
 }
 
 .speech img {
@@ -98,9 +98,9 @@ background-size: cover;
 #trending-title {
     padding: 20px;
     margin-bottom: -50px;
-    font-size: 34px;
-    text-align: center;
     font-family: cursive;
+    text-align: center;
+    font-size: 34px;
 }
 
 #display-artist-container,
@@ -148,8 +148,8 @@ background-size: cover;
 }
 
 #trackInfoBtn {
-    font-size: 12px;
     margin-top: 5px;
+    font-size: 12px;
 }
 
 #display-album-card,
@@ -218,23 +218,28 @@ background-size: cover;
     .section {
         padding-top: 1rem;
         padding-bottom: 1rem;
-        } 
-        #artist-image-section {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-        #artist-social-media-section {
-            padding-bottom: 3rem;
-        }
-        #artist-discography-section {
-            padding-top: 2.5rem;
-        }
-        #song-music-video-section {
-            padding-bottom: 2rem;
-        }
-        #song-lyrics-section {
-            padding-top:3rem;
-        }
+    }
+
+    #artist-image-section {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    #artist-social-media-section {
+        padding-bottom: 3rem;
+    }
+
+    #artist-discography-section {
+        padding-top: 2.5rem;
+    }
+
+    #song-music-video-section {
+        padding-bottom: 2rem;
+    }
+
+    #song-lyrics-section {
+        padding-top:3rem;
+    }
 }    
 @media screen and (max-width: 578px) {
 
@@ -250,6 +255,7 @@ background-size: cover;
     .section {
       padding: 1rem 1.5rem;
     }
+
     .speech {
       width: 80%;
     }
@@ -277,6 +283,7 @@ background-size: cover;
     .speech input {
       margin-left: 0px;
     }
+
     #main-footer {
       margin-top: 0px;
       height: 100px;

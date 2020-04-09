@@ -29,6 +29,7 @@ $(document).ready(function() {
             method: "GET"
         }).then (function(response) {
             console.log(response);
+
             for (let j = 0; j < response.trending.length; j++) {
                 const $div = $("<div>")
                 $div.addClass("div-trending-album-artist");
@@ -57,6 +58,7 @@ $(document).ready(function() {
             method: "GET"
         }).then (function(response){
             console.log(response);
+
             for (let i = 0; i < response.trending.length; i++) {
                 const $div = $("<div>")
                 $div.addClass("div-trending-song-album-artist");
@@ -85,17 +87,14 @@ $(document).ready(function() {
         event.preventDefault();
 
         if ($("#search-artist").val().trim() === "" && $("#search-album").val().trim() === "" && $("#search-song").val().trim() === "") {
-            console.log("Hello");
             $("#error-text").show();
             return false;
         } 
-        else if ($("#search-artist").val().trim() === "" && $("#search-album").val().trim() === "") {
-            console.log("Hello");
+       else if ($("#search-artist").val().trim() === "" && $("#search-album").val().trim() === "") {
             $("#error-text").show();
             return false;
         }
         else if ($("#search-artist").val().trim() === "" && $("#search-song").val().trim() === "") {
-            console.log("Hello");
             $("#error-text").show();
             return false;
         }
@@ -117,7 +116,6 @@ $(document).ready(function() {
             displayAlbum();
         }
         else if ($("#search-artist").val().trim() === "") {
-            console.log("Hello");
             $("#error-text").show();
             return false;
         }
@@ -198,8 +196,6 @@ $(document).ready(function() {
                 $("#artist-social-media").append($aTwitterTag);
                 $("#a-twitter-icon").append($imgTwitterIcon);
 
-
-                // $("#artist-social-media").prepend($imgWebsiteIcon, $imgFacebookIcon, $imgTwitterIcon);
                 $("#artist-style-genre-mood").prepend($pStyle, $pGenre, $pMood);
 
                 // Artist - Discography Column
@@ -215,10 +211,11 @@ $(document).ready(function() {
                         $("#artist-discography").empty();
 
                         const albumList = response.album;
+
                         for (let i = 0; i < albumList.length; i++) {
-                            // const $div = $("<div>");
                             const $div = $("<div>");
                             $div.addClass("div-album");
+
                             const $albumName = $("<p>").text(`Album: ${albumList[i].strAlbum}`);
                             const $albumYear = $("<p>").text(`Year: ${albumList[i].intYearReleased}`);
 
@@ -241,9 +238,11 @@ $(document).ready(function() {
                         $("#artist-most-loved-tracks").empty();
 
                         const mostLovedTrackList = response.track;
+
                         for (let i = 0; i < mostLovedTrackList.length; i++) {
                             const $div = $("<div>");
                             $div.addClass("div-most-loved-tracks");
+
                             const $trackName = $("<p>").text(`Track: ${mostLovedTrackList[i].strTrack}`);
                             const $trackInfoModal = $(`<button class="button" id="trackInfoBtn" data-modal="Track ${[i]}">Track Info</button>
                                                         <div class="modal trackInfoModal">
@@ -299,6 +298,7 @@ $(document).ready(function() {
                         for (let i = 0; i < 10; i++) {
                             const $div = $("<div>");
                             $div.addClass("div-music-videos");
+
                             const $artistMusicVideoName = $("<p>").text(`Music Video: ${musicVideoList[i].strTrack}`).attr("style", "text-decoration: underline");
                             const $artistMusicVideoURL = $("<a>").text(`${musicVideoList[i].strMusicVid}`).attr("href", musicVideoList[i].strMusicVid).attr("target", "_blank");
 
@@ -313,12 +313,11 @@ $(document).ready(function() {
                 musicVideos();
 
                 $("#display-artist-container").show();
-    
+                 
             }).catch(function(error) {
 
                 $("#error-text").show();
                 $("#display-trending-album-container").show();
-
             })
         }
 
@@ -361,7 +360,8 @@ $(document).ready(function() {
                                                             ${response.album[0].strDescriptionEN}
                                                         </section>
                                                     </div>
-                                                </div>`)                          
+                                                </div>`)      
+
                 $("#album-description").append($pAlbumDescription, $fullDescriptionModalAlbum);
 
                 $("#fullDescriptionBtnAlbum").click(function() {
@@ -390,7 +390,6 @@ $(document).ready(function() {
                 $("#album-style-genre-mood").append($pAlbumStyle, $pAlbumGenre, $pAlbumMood);
 
                 $("#display-album-container").show();
-
             })
         }
 
@@ -435,7 +434,8 @@ $(document).ready(function() {
                                                             ${response.track[0].strDescriptionEN}
                                                         </section>
                                                     </div>
-                                                </div>`)                          
+                                                </div>`)      
+
                 $("#song-description").append($pSongDescription, $fullDescriptionModalSong);
 
                 $("#fullDescriptionBtnSong").click(function() {
@@ -489,7 +489,8 @@ $(document).ready(function() {
                                                                     ${response.lyrics}
                                                                 </section>
                                                             </div>
-                                                        </div>`)                          
+                                                        </div>`)      
+
                         $("#song-lyrics").append($pSongLyrics, $fullLyricsModalSong);
         
                         $("#fullLyricsBtnSong").click(function() {
@@ -497,12 +498,13 @@ $(document).ready(function() {
                             $("html").addClass("is-clipped");
                           });
                           
-                          $(".delete").click(function() {
+                        $(".delete").click(function() {
                             $(".fullLyricsModalSong").removeClass("is-active");  
                             $("html").removeClass("is-clipped");
-                          });
+                        });
                     })
                 }
+
                 lyricsOVH();
 
                 $("#display-song-container").show();
