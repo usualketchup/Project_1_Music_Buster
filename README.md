@@ -3,8 +3,8 @@
 Team: Norberto Mantohac, Ujwal Kashyap, Narayan Poudel, Shahid Hussain
 
 URL Links:
-  1) https://github.com/NMantohac/Project_1
-  2) https://nmantohac.github.io/Project_1/
+  1) https://github.com/NMantohac/Project_1_Music_Buster
+  2) https://nmantohac.github.io/Project_1_Music_Buster/
   
 Description:
   - The Music Buster app uses two APIs (TheAudioDB and lyrics.ovh) to obtain all kinds of cool information regarding an artist,
